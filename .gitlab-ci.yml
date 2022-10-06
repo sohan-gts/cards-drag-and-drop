@@ -1,3 +1,4 @@
+#START
 image: node:16.14.2-bullseye
 stages:
   - setup
@@ -11,4 +12,5 @@ deployment:
   before_script:
     - npm ci
   script:
-    - npx cross-env NG_DEPLOY_AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID NG_DEPLOY_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY NG_DEPLOY_AWS_BUCKET=africonnect-webiste-frontend NG_DEPLOY_AWS_REGION=$AWS_DEFAULT_REGION ng deploy
+    - npx cross-env NG_DEPLOY_AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID NG_DEPLOY_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY NG_DEPLOY_AWS_BUCKET=angular-testing-frontend NG_DEPLOY_AWS_REGION=$AWS_DEFAULT_REGION ng deploy
+#END
