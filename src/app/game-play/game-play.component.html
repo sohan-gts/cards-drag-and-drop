@@ -1,0 +1,39 @@
+<div class="game-play">
+  <div class="main-content">
+
+  </div>
+
+  <div class="bottom-outer">
+
+    <div class="my-cards" #myCardsContainer>
+      <div style="display: flex; align-items:center; justify-content: center; border: 4px solid royalblue; height: 143px;
+      position: relative;"
+        [style.width]="100*myCards.length/3+'px'" >
+        <div class="my-card-wrapper cards-fly-in" style="width: 100px; position: absolute; left: 0; "
+        *ngFor="let item of myCards ; let i = index"
+        draggable="true"
+        [style.zIndex]="i"
+        [style.transform]="'translateX('+(i*20)+'px)'"
+        #myCardsOpned >
+
+        <img
+        draggable="true"
+        [id]="item.suit+item.face"
+        [src]="'assets/images/cards/'+item.suit+item.face+'.png'"
+         alt=""
+        class="img-fluid my-deck cursor-pointer"
+        style="width: 100px;"
+        />
+
+      </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+
+  </div>
+</div>
+
