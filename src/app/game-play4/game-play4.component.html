@@ -1,1 +1,70 @@
-<p>game-play4 works!</p>
+  <div class="main-content" cdkDropListGroup>
+
+
+    <div
+    class="game-table
+    d-flex justify-content-center  flex-wrap">
+    <div
+        class="table-cards"
+        *ngFor="let slot of cardsOnTable; let i = index">
+        <div
+            class="table-card"
+            [id]="'slot'+i"
+            cdkDropList
+            [cdkDropListData]="slot?.attack"
+            cdkDropListConnectedTo="myOwnCards"
+            (cdkDropListDropped)="drop($event)"
+            cdkDropListOrientation="horizontal"
+            *ngFor="let el of slot?.attack; let index = index">
+
+            <img
+              [id]="el?.suit+el?.face"
+              [src]="'assets/images/cards/'+el?.suit+el?.face+'.png'" alt=""
+              class="img-fluid my-deck cursor-pointer"
+              draggable="false"/>
+
+        </div>
+
+    </div>
+    </div>
+
+
+      <div class="my-cards-wrapper">
+
+          <div
+            id="myOwnCards"
+            cdkDropList
+            cdkDropListSortingDisabled
+            [cdkDropListData]="myCards"
+            [cdkDropListConnectedTo]="this.dropListConnectedTo"
+            cdkDropListOrientation="horizontal"
+            class="example-list"
+
+            (cdkDropListDropped)="drop($event)">
+                <div class="example-box"
+                *ngFor="let card of myCards ; let i = index"
+                  cdkDrag
+                  #myCardsOpned
+                  [cdkDragData]="card">
+
+                  <img [src]="'assets/images/cards/'+ card.suit + card.face+'.png'" alt="" class="card-img">
+
+                  <img
+                  [id]="card?.suit+card?.face"
+                  *cdkDragPreview
+                  [src]="'assets/images/cards/' + card?.suit+card?.face + '.png'"
+                  alt=""
+                  class="my-deck cursor-pointer cdkDragPickedPreview"
+                  draggable="false"/>
+                </div>
+          </div>
+      </div>
+
+
+      <div class="bottom">
+
+      </div>
+  </div>
+
+
+

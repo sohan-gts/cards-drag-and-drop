@@ -1,104 +1,90 @@
-<!-- <div class="my-table d-flex justify-content-center align-items-center ">
+<!--
+<app-float-btn></app-float-btn>
 
+<div class="my-table d-flex justify-content-center align-items-center" >
   <div
-
-    id="tableCards"
-    cdkDropList
-    [cdkDropListData]="tableCards"
-    cdkDropListConnectedTo="myCards"
-    class="example-list tableCards"
-    (cdkDropListDropped)="drop($event)"
-    [cdkDropListEnterPredicate]="evenPredicate"
-    cdkDropListOrientation="horizontal"
-    >
-
-
-        <div class="example-box" *ngFor="let item of tableCards;let i = index"
-          cdkDrag
-          [cdkDragData]="item"
-          [ngStyle]="{'transform': 'translate(' + (-i*80) + 'px, ' + (i*20) + 'px)'}"
-          >
-      <img
-      [src]="'assets/images/cards/'+item.suit+item.face+'.png'" alt=""
-      class="img-fluid my-deck cursor-pointer" style="width: 100px;"/>
-    </div>
-
-
-
-  </div>
-</div> -->
-
-
-
-
-<div class="my-table d-flex justify-content-center align-items-center ">
+       *ngFor="let slot of tableCards; let i = index" class="table-slot" #tableContainer>
     <div
-    *ngFor="let slot of tableCards; let i = index" class="table-slot" #tableContainer>
+      class="example-box" id="{{ 'slot' + i }}"
+      cdkDropList [cdkDropListData]="slot.attack"
+      cdkDropListConnectedTo="myCards" class="example-list  border border-danger"
+      (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="evenPredicate"
+      cdkDropListOrientation="horizontal"
+      [ngStyle]="index >= 1? { transform: 'translate(' + index * 20 + 'px, ' + -index * 120 + 'px)'} : {}"
+      *ngFor="let item of slot.attack; let index = index">
 
-    <div class="example-box"
-
-    id="{{'slot'+i}}"
-    cdkDropList
-    [cdkDropListData]="slot.attack"
-    cdkDropListConnectedTo="myCards"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)"
-
-    [cdkDropListEnterPredicate]="evenPredicate"
-
-
-    cdkDropListOrientation="horizontal"
-
-    [ngStyle]="index>=1 ? {'transform': 'translate(' + (index*20) + 'px, ' + (-index*120) + 'px)'}:{}"
-    *ngFor="let item of slot.attack;let index = index"
-
-    >
-
-    <!-- {{'slot'+i}} -->
-      <img
-      cdkDrag
-      [cdkDragData]="item"
-      [src]="'assets/images/cards/'+item.suit+item.face+'.png'" alt=""
-      class="img-fluid my-deck cursor-pointer" style="width: 100px;"/>
-
-</div>
+      <img cdkDrag [cdkDragData]="item"
+        [src]="'assets/images/cards/' + item.suit + item.face + '.png'"
+        class="img-fluid my-deck cursor-pointer" style="width: 100px"/>
 
     </div>
-
+  </div>
 </div>
-
-
-
-
-<!-- {{evenPredicate}} -->
-
 
 <div class="bottom d-flex align-items-center justify-content-center">
+  <button mat-raised-button color="primary" (click)="iTake()">
+    i Take
+  </button>
+  <div  id="myCards" cdkDropList [cdkDropListData]="myCards"
+        [cdkDropListConnectedTo]="this.dropListConnectedTo" class="example-list border border-danger border-4 my-cards"
+        (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="evenPredicate" cdkDropListOrientation="horizontal"
+        #myCardsContainer>
 
-  <div
-
-    id="myCards"
-    cdkDropList
-    [cdkDropListData]="myCards"
-    [cdkDropListConnectedTo]="this.dropListConnectedTo"
-    class="example-list border border-danger border-4 my-cards"
-    (cdkDropListDropped)="drop($event)"
-    [cdkDropListEnterPredicate]="noReturnPredicate"
-    cdkDropListOrientation="horizontal"
-      >
-<!-- {{this.dropListConnectedTo | json}} -->
-
-    <div class="example-box my-card-wrapper" *ngFor="let item of myCards ; let i = index "
-        [cdkDragData]="item"
-        cdkDrag
-    >
-      <img
-      [src]="'assets/images/cards/'+item.suit+item.face+'.png'" alt=""
-      class="my-deck cursor-pointer" />
-
+    <div class="example-box my-card-wrapper" *ngFor="let item of myCards; let i = index" [cdkDragData]="item" cdkDrag>
+      <img [src]="'assets/images/cards/' + item.suit + item.face + '.png'" class="my-deck cursor-pointer"/>
     </div>
 
-
   </div>
-
 </div>
+
+
+
+
+
+
+
+<div class="example-container">
+  <h2>Available numbers</h2>
+
+  <div
+    id="all"
+    cdkDropList
+    [cdkDropListData]="all"
+    cdkDropListConnectedTo="even"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListEnterPredicate]="noReturnPredicate">
+
+
+    <div
+      class="example-box"
+      *ngFor="let number of all"
+      [cdkDragData]="number"
+      cdkDrag>
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      {{number}}
+      </div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Even numbers</h2>
+
+  <div
+    id="even"
+    cdkDropList
+    [cdkDropListData]="even"
+    cdkDropListConnectedTo="all"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListEnterPredicate]="evenPredicate">
+    <div
+      class="example-box"
+      *ngFor="let number of even"
+      cdkDrag
+      [cdkDragData]="number">
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
+      {{number}}</div>
+  </div>
+</div> -->

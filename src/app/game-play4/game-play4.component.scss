@@ -1,0 +1,100 @@
+
+
+
+
+.example-list {
+  min-height: 60px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 4px;
+  // overflow: hidden;
+  // max-width: 500px;
+  border: 3px solid red;
+
+  // transform-origin: 10% 100%;
+}
+.cdkDragPickedPreview,
+.example-box {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  width: 10em;
+  box-sizing: border-box;
+  cursor: move;
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  // box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  //             0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  //             0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+
+.my-cards-wrapper{
+  position: fixed;
+  bottom: 145px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  // border: 3px solid #fff;
+  .card-img{
+    transform-origin: 10% 100%;
+    max-width: 10em;
+  }
+}
+
+
+.main-content{
+  height: 86vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, rgb(69, 129, 182) 0%, rgb(44, 84, 121) 100%);
+}
+
+
+ .bottom{
+      padding: 20px 0;
+      min-height: 106px;
+      background-image: linear-gradient(#FBFBFB, #D1D1D1);
+      box-shadow: 0px -8px 22px rgba(0, 0, 0, 0.1607843137);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+ }
+
+
+ .table-card{
+    border: 3px dotted #ccc;
+    border-radius: 7px;
+    width: 100px;
+    margin-right: 10px;
+    height: 140px;
+ }

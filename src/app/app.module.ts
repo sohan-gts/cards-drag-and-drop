@@ -11,16 +11,23 @@ import { GamePlayComponent } from './game-play/game-play.component';
 import { GamePlay2Component } from './game-play2/game-play2.component';
 import { GamePlay3Component } from './game-play3/game-play3.component';
 import { GamePlay4Component } from './game-play4/game-play4.component';
-
-
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { NgxCaptureModule } from 'ngx-capture';
+import { FloatBtnComponent } from './float-btn/float-btn.component';
+import { CanvasDrawComponent } from './canvas-draw/canvas-draw.component';
+import {MatSliderModule} from '@angular/material/slider';
+import { GamePlay5Component } from './game-play5/game-play5.component';
 @NgModule({
   declarations: [
     AppComponent,
     GamePlayComponent,
     GamePlay2Component,
     GamePlay3Component,
-    GamePlay4Component
+    GamePlay4Component,
+    FloatBtnComponent,
+    CanvasDrawComponent,
+    GamePlay5Component
   ],
   imports: [
     BrowserModule,
@@ -28,6 +35,11 @@ import { GamePlay4Component } from './game-play4/game-play4.component';
     DragDropModule,
     provideFirebaseApp(() => initializeApp(environment.config)),
     provideFirestore(() => getFirestore()),
+    MatButtonModule,
+    NgxCaptureModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

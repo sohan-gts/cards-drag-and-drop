@@ -1,36 +1,67 @@
-<div cdkDropListGroup>
 
-
+<div class="d-flex justify-content-around align-items-center ">
 
   <div class="example-container">
+    <h2>Available numbers</h2>
+
     <div
+      id="all"
       cdkDropList
-      [cdkDropListData]="items"
+      [cdkDropListData]="all"
+      cdkDropListConnectedTo="even"
       class="example-list"
-      cdkDropListSortingDisabled
-      [cdkDropListEnterPredicate]="noReturnPredicate"
-      (cdkDropListDropped)="drop($event)"
       cdkDropListOrientation="horizontal"
-      >
-      <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
+      (cdkDropListDropped)="drop($event)"
+      [cdkDropListEnterPredicate]="noReturnPredicate">
+      <div
+        class="example-box"
+        *ngFor="let number of all"
+        [cdkDragData]="number"
+        cdkDrag>
+
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+           {{number}}
+      </div>
+
+        <div *cdkDragPreview>
+         hello there
+        </div>
+
+
+    </div>
+  </div>
+  <br>
+  <div class="example-container">
+    <h2>Even numbers</h2>
+
+    <div
+      id="even"
+      cdkDropList
+      [cdkDropListData]="even"
+      cdkDropListConnectedTo="all"
+      class="example-list"
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="drop($event)"
+      [cdkDropListEnterPredicate]="evenPredicate">
+      <div
+        class="example-box"
+        *ngFor="let number of even"
+        cdkDrag
+        [cdkDragData]="number">
+        <!-- <div class="example-custom-placeholder" *cdkDragPlaceholder></div> -->
+
+        {{number}}
+
+      </div>
     </div>
   </div>
 
+</div>
 
 
 
-  <div class="example-container">
-    <div
-      cdkDropList
-      [cdkDropListData]="basket"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)"
-      cdkDropListOrientation="horizontal"
-      >
-      <div class="example-box" *ngFor="let item of basket" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-
-
-
+<div class="d-flex align-items-center justify-content-center">
+  <mat-slider min="1" max="10000000" step="0.5" value="1.5" showTickMarks discrete [displayWith]="formatLabel">
+    <input matSliderThumb>
+  </mat-slider>
 </div>

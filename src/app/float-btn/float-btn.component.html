@@ -1,0 +1,11 @@
+<div class="drag-boundary">
+
+  <button (click)="capture()"  mat-fab matTooltip="Take a screen shot" color="primary" cdkDrag cdkDragBoundary=".drag-boundary" class="ss-btn">
+    <mat-icon>screenshot</mat-icon>
+  </button>
+
+  <div class="taken-ss-wrapper" #ssWrapper cdkDrag cdkDragBoundary=".drag-boundary">
+
+  </div>
+
+</div>

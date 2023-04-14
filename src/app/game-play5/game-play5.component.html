@@ -1,0 +1,10 @@
+<div class="cards-game">
+  <div class="columns">
+    <div class="column" *ngFor="let column of columns" cdkDropList (cdkDropListDropped)="drop($event)">
+      <div class="column-header">{{ column.name }}</div>
+      <div class="card" *ngFor="let card of column.cards" cdkDrag>
+        {{ card.value }} of {{ card.suit }}
+      </div>
+    </div>
+  </div>
+</div>
